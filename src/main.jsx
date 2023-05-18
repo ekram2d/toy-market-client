@@ -8,12 +8,14 @@ import {
 import './index.css'
 import App from './App';
 import Home from './Components/Home/Home';
+import Erropage from './Components/ErrorPage/Erropage';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement:<Erropage></Erropage>,
   
   children:[{
     path:'/',
