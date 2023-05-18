@@ -5,16 +5,17 @@ import './App.css'
 import { Outlet } from 'react-router-dom'
 import Footer from './Components/Footer/Footer'
 import Home from './Components/Home/Home'
+import Header from './Components/Header/Header'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <>
-     <Home></Home>
-       <Outlet></Outlet>
-       <Footer></Footer>
-    </>
+    <div className='w-[80%] mx-auto mt-2'>
+      <Header></Header>
+      <Outlet></Outlet>
+      <Footer></Footer>
+    </div>
   )
 }
 
