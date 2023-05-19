@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from '../../PROvider/PRvider';
 
 
 
 const Header = () => {
+      const { user, Logout } = useContext(AuthContext);
+      const [showtxt, setShowtxt] = useState(false)
+      // console.log(user.photoURL            )
+
+      const handleLogout = () => {
+
+            Logout()
+                  .then((result) => {
+
+                  })
+                  .catch(error => {
+
+                  })
+
+      }
       return (
             <div className="navbar bg-base-300 rounded-lg">
                   <div className="navbar-start">
@@ -17,7 +33,7 @@ const Header = () => {
                                     <li> <NavLink to="/">ToY</NavLink></li>
                               </ul>
                         </div>
-                        <a className="btn btn-ghost  text-xl font-bold uppercase">Amazon Toys
+                        <a className=" text-xl font-bold uppercase">Amazon Toys
                         </a>
                   </div>
                   <div className="navbar-center hidden lg:flex">
@@ -27,8 +43,39 @@ const Header = () => {
                               <li> <NavLink to="/toy">ToY</NavLink></li>
                         </ul>
                   </div>
+                 
+
+
                   <div className="navbar-end">
-                        <Link to='/login' className="btn">Login</Link>
+                        <span>
+                        {user && <div className='d-flex flex-col relative '>
+                                          <div className='block '>
+                                          <img className='rounded w-[50%]'
+                                                      
+                                                      src={user.photoURL}
+                                                      roundedCircle
+                                                      onMouseEnter={() => setShowtxt(true)}
+                                                      onMouseLeave={() => setShowtxt(false)}
+                                                />
+                                          </div>
+                                          <div> <NavLink
+                                                      className='absolute text-decoration-none fw-bolder text-xl font-bold bottom-1 text-red-700'
+                                                >
+                                                      {showtxt && user.displayName}
+                                                </NavLink></div>
+                                               
+                                          </div>}
+                        </span>
+                       
+                 
+                        <div>
+                              {
+                                    user ? <button className=" btn btn-light " variant="secondary" onClick={handleLogout}>Logout</button> :
+                                          <button className=" btn btn-light "><NavLink to='/login'
+                                                className={`${location.pathname === '/' ? '' : ''} text-decoration-none text-dark font-weight-bold`}
+                                          >Login</NavLink></button>
+                              }
+                        </div>
                   </div>
             </div >
       );

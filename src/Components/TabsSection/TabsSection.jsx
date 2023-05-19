@@ -25,7 +25,7 @@ const TabsSection = () => {
 
   }, [])
 
-  console.log(data1,data2,data3);
+  // console.log(data1,data2,data3);
 
  
   // console.log(data1, data2, data3)
