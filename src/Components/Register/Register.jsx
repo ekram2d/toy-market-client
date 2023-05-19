@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../PROvider/PRvider';
 
 const Register = () => {
     
             const [error, setError] = useState(null);
-      const handleLogin = (event) => {
+            const navigate= useNavigate()
+            const [succes,setSucess]=useState(null);
+            const { createUser,Logout } = useContext(AuthContext);
+      const handleRegister = ((event) => {
             event.preventDefault();
             setError("");
             const form = event.target;
             // console.log(form)
+            const name=form.displayname.value;
+            const photo=form.url.value;
             const email = form.email.value;
             const password = form.password.value;
 
@@ -16,10 +22,51 @@ const Register = () => {
                   setError('password must be at least 6 character')
                   return;
             }
-            console.log(email, password)
+            console.log(name,photo,  email, password)
+            createUser(email, password)
+                  .then((result) => {
+                        console.log(result);
+                        const registerUser = result.user;
+                        console.log(registerUser);
+                        setProfile(name, photo);
+                        setSucess("succesfully created")
+                        Logout()
+                        .then((result) => {
+      
+                        })
+                        .catch(error => {
+      
+                        })
 
+                        navigate('/login')
+                      
 
+                  })
+                  .catch(error => {
+                        setError(error.messgae);
+
+                  })
+                 
+
+      })
+      const setProfile = (name, photo) => {
+            console.log("eeeeee", name, photo)
+            updateProfile(auth.currentUser, {
+                  displayName: name, photoURL: photo
+            })
+                  .then((user) => {
+                        console.log('Profile updated!');
+                        // Profile updated!
+                        // ...
+                  }).catch((error) => {
+                        console.log(error.messgae);
+                        // An error occurred
+                        // ...
+                  });
       }
+
+
+      
       return (
             <div className="hero min-h-screen bg-base-200">
                   <div className="hero-content flex-col lg:flex">
@@ -29,13 +76,13 @@ const Register = () => {
                         </div>
                         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                               <div className="card-body">
-                                    <form onSubmit={handleLogin}>
+                                    <form onSubmit={handleRegister}>
 
                                     <div className="form-control">
                                                 <label className="label">
                                                       <span className="label-text">User Name</span>
                                                 </label>
-                                                <input type="text" name="name" placeholder="name" className="input input-bordered" required />
+                                                <input type="text" name="displayname" placeholder="name" className="input input-bordered" required />
                                           </div>
 
 

@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { GithubAuthProvider, GoogleAuthProvider, getAuth } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import app from '../../firebase/firebase.config';
+import { AuthContext } from '../../PROvider/PRvider';
 
 const Login = () => {
       const [error, setError] = useState(null);
-      const handleLogin=(event)=>{
+      const auth = getAuth(app)
+      const Provider = new GoogleAuthProvider();
+
+      const navigate = useNavigate();
+      const location = useLocation();
+      const { signIn, LogWithGoogle } = useContext(AuthContext);
+
+      // console.log('dddddd',location);
+
+      const from = location.state?.from?.pathname || '/'
+      const handleLogin = (event) => {
             event.preventDefault();
             setError("");
             const form = event.target;
-            // console.log(form)
             const email = form.email.value;
             const password = form.password.value;
 
@@ -15,10 +27,30 @@ const Login = () => {
                   setError('password must be at least 6 character')
                   return;
             }
-            console.log(email,password)
-
+            signIn(email, password)
+                  .then(result => {
+                        const singUser = result.user;
+                        // console.log(singUser);
+                        navigate(from)
+                  })
+                  .catch(error => {
+                        setError(error.message);
+                  })
 
       }
+      const handleGoogleSignIn = () => {
+            console.log("gihub mama is coming")
+            LogWithGoogle(auth, Provider)
+                  .then(result => {
+                        const user = result.user;
+
+                        // console.log(user);
+                        navigate(from)
+                  })
+                  .catch((error) => setError(error))
+
+      }
+
       return (
             <div className="hero min-h-screen bg-base-200">
                   <div className="hero-content flex-col lg:flex">
@@ -41,16 +73,23 @@ const Login = () => {
                                                 <label className="label">
                                                       <span className="label-text">Password</span>
                                                 </label>
-                                                <input type="password" name="password" placeholder="password" className="input input-bordered" required/>
+                                                <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                                                 <label className="label">
                                                       <p>Have account? <Link to="/register" className="label-text-alt link link-hover font-bold">Go Register</Link></p>
                                                 </label>
                                           </div>
+
                                           <div className="form-control mt-6">
                                                 <input type="submit" value="Login" className="btn btn-primary" />
 
                                           </div>
                                     </form>
+                                    <div className='text-center'>
+                                          <button onClick={handleGoogleSignIn} type="submit" className="btn btn-outline btn-danger">Google Login</button>
+
+
+                                    </div>
+
                                     <div>
                                           <p className='text-red-700'>{error}</p>
                                     </div>
