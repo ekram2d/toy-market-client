@@ -9,6 +9,7 @@ import './index.css'
 import App from './App';
 import Home from './Components/Home/Home';
 import Erropage from './Components/ErrorPage/Erropage';
+import Login from './Components/Login/Login';
 
 
 const router = createBrowserRouter([
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
   
   {
     path:'/login',
-    element:<p>this is login</p>
+    element:<Login></Login>
 
   },
   {
