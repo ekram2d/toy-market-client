@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../PROvider/PRvider';
-
+import Swal from 'sweetalert2'
+// const Swal = require('sweetalert2')
 const AddToy = () => {
       const { user } = useContext(AuthContext);
+      
       // console.log(user);
       //  pictureUrl, name, sellerName, sellerEmail, price, rating, availableQuantity, description
       const handleBookService = event => {
@@ -48,7 +50,13 @@ const AddToy = () => {
                   .then(data => {
                         console.log(data);
                         if (data.insertedId) {
-                              alert('service book successfully')
+                              // alert('service book successfully')
+                              Swal.fire({
+                                    title: 'Success!',
+                                    text: 'add toy successfully',
+                                    icon: 'success',
+                                    confirmButtonText: 'OK'
+                                  })
                         }
                   })
 
