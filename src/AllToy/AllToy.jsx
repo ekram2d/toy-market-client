@@ -25,11 +25,11 @@ const AllToy = () => {
                                           <th>{index + 1}</th>
                                           <td>{toy?.sellerName}</td>
                                           <td>{toy?.name}</td>
-                                          <td>{toy.subCategory}</td>
+                                          <td>{toy?.subCategory}</td>
                                           <td>{toy?.price}</td>
                                           <td>{toy?.availableQuantity}</td>
 
-                                          <td> <Link to={`/details/${toy._id}`}> <button className="btn btn-sm">Veiw Details</button></Link> </td>
+                                          <td> <Link to={`/details/${toy?._id}`}> <button className="btn btn-sm">Veiw Details</button></Link> </td>
 
                                     </tr>
 
