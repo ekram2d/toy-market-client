@@ -1,11 +1,14 @@
 import React from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 
 const AllToy = () => {
       const toys = useLoaderData();
-      console.log(toys);
+      const location =useLocation();
+      // console.log("lo",location);
+      // console.log(toys);
       return (
             <div className="w-full">
+                  {/* <h1>{location.pathname}</h1> */}
                   <table className="table table-compact w-full">
                         <thead>
                               <tr>
@@ -29,7 +32,7 @@ const AllToy = () => {
                                           <td>{toy?.price}</td>
                                           <td>{toy?.availableQuantity}</td>
 
-                                          <td> <Link to={`/details/${toy?._id}`}> <button className="btn btn-sm">Veiw Details</button></Link> </td>
+                                          <td> <Link to={`/details/${toy._id}`}> <button className="btn btn-sm">Veiw Details</button></Link> </td>
 
                                     </tr>
 

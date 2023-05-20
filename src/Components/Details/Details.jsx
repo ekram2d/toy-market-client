@@ -6,7 +6,7 @@ const Details = () => {
       const _id = useParams();
       const { id } = _id;
       const { user } = useContext(AuthContext);
-      console.log("ki", user)
+      // console.log("ki", user)
       const singledata= useLoaderData()
       // useEffect(() => {
       //       fetch(`http://localhost:5000/singleservices/${id}`)
@@ -21,6 +21,7 @@ const Details = () => {
       //       return
       //    }
       const { pictureUrl, name, sellerName, sellerEmail, price, rating, availableQuantity, description } = singledata;
+      // console.log(singledata)
       return (
             <div className="card  w-[80%]lg:card-side bg-base-100 shadow-xl mt-24">
                   <figure><img className='lg:w-[50%] rounded-lg' src={pictureUrl} alt="Album" /></figure>

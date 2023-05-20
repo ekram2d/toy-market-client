@@ -32,6 +32,7 @@ const Header = () => {
                                     <li> <NavLink to="/">Home</NavLink></li>
                                     <li> <NavLink to="/blog">Blog</NavLink></li>
                                     <li> <NavLink to="/toy">All ToY</NavLink></li>
+                                    <li> <NavLink to="/addToy">Add Toy</NavLink></li>
                               </ul>
                         </div>
                         <a className=" text-xl font-bold uppercase">Amazon Toys
@@ -42,6 +43,7 @@ const Header = () => {
                               <li> <NavLink to="/">Home</NavLink></li>
                               <li> <NavLink to="/blog">Blog</NavLink></li>
                               <li> <NavLink to="/toy">All ToY</NavLink></li>
+                              <li> <NavLink to="/addToy">Add Toy</NavLink></li>
                         </ul>
                   </div>
                  

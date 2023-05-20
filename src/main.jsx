@@ -14,6 +14,7 @@ import Register from './Components/Register/Register';
 import PRvider from './PROvider/PRvider';
 import Details from './Components/Details/Details';
 import AllToy from './AllToy/AllToy';
+import AddToy from './AddToy/AddToy';
 
 
 
@@ -53,13 +54,17 @@ const router = createBrowserRouter([
   {
     path:'/toy',
     element:<AllToy></AllToy>,
-    loader:({params})=>fetch("http://localhost:5000/datas")
+    loader:({params})=>fetch("http://localhost:5000/alltoy")
 
   },
   {
    path:'/details/:id',
    element:<Details></Details>,
    loader:({params})=>fetch(`http://localhost:5000/singleservices/${params.id}`)
+  },
+  {
+    path:'/addToy',
+    element:<AddToy></AddToy>
   },
 
 ]
