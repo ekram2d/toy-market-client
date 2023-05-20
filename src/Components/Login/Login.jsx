@@ -3,17 +3,17 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import app from '../../firebase/firebase.config';
 import { AuthContext } from '../../PROvider/PRvider';
-
+const auth = getAuth(app);
 const Login = () => {
       const [error, setError] = useState(null);
-      const auth = getAuth(app)
+      
       const Provider = new GoogleAuthProvider();
 
       const navigate = useNavigate();
       const location = useLocation();
       const { signIn, LogWithGoogle } = useContext(AuthContext);
 
-      // console.log('dddddd',location);
+      // console.log('dddddd',location.state.from);
 
       const from = location.state?.from?.pathname || '/'
       const handleLogin = (event) => {
@@ -39,7 +39,7 @@ const Login = () => {
 
       }
       const handleGoogleSignIn = () => {
-            console.log("gihub mama is coming")
+            // console.log("gihub mama is coming")
             LogWithGoogle(auth, Provider)
                   .then(result => {
                         const user = result.user;
@@ -84,13 +84,14 @@ const Login = () => {
 
                                           </div>
                                     </form>
+                                   
+
+                                    <div>
                                     <div className='text-center'>
                                           <button onClick={handleGoogleSignIn} type="submit" className="btn btn-outline btn-danger">Google Login</button>
 
 
                                     </div>
-
-                                    <div>
                                           <p className='text-red-700'>{error}</p>
                                     </div>
                               </div>

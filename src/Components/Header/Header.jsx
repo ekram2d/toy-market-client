@@ -8,7 +8,7 @@ const Header = () => {
       const { user, Logout } = useContext(AuthContext);
       const [showtxt, setShowtxt] = useState(false)
       // console.log(user.photoURL            )
-
+      // console.log("he",user?.displayName)
       const handleLogout = () => {
 
             Logout()

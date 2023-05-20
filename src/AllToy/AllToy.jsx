@@ -23,8 +23,7 @@ const AllToy = () => {
                                     <th>Sub-Category</th>
                                     <th>Price</th>
                                     <th>Avialble Quantity</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
+                                  
                               </tr>
                         </thead>
                         <tbody>

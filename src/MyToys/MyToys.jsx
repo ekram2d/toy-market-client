@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../PROvider/PRvider';
 import { Link } from 'react-router-dom';
-
+import Swal from 'sweetalert2'
 const MyToys = () => {
       const { user } = useContext(AuthContext);
       // console.log(user?.email);
@@ -13,7 +13,30 @@ const MyToys = () => {
                   .then(res => res.json())
                   .then(data => setBooking(data))
       }, [load])
-      console.log(toys)
+      // console.log(toys)
+      const handledelete=(id)=>{
+            console.log(id);
+            const proceed = confirm("Are sure to delete");
+            if(proceed) {
+                  fetch(`http://localhost:5000/bookings/${id}`,{
+                        method:'DELETE'
+                  })
+                  .then(res=>res.json())
+                  .then(data =>{
+                        console.log(data);
+                        if(data.deletedCount>=1) {
+                        setLoad(!load)
+                        Swal.fire({
+                              title: 'Success!',
+                              text: 'Delete toy successfully',
+                              icon: 'success',
+                              confirmButtonText: 'OK'
+                            })
+
+                        }
+                  })
+            }
+      }
       return (
             <div>
                   <div className="w-full">
@@ -42,11 +65,11 @@ const MyToys = () => {
                                                 <td>{toy?.price}</td>
                                                 <td>{toy?.availableQuantity}</td>
 
-                                                <td> <button className="btn btn-outline btn-primary">Update</button>
+                                                <td> <button className="btn btn-outline btn-primary" onClick={()=>setLoad(!load)}>Update</button>
                                                      
                                                 </td>
                                                 <td>
-                                                <button className="btn btn-outline btn-secondary">Delete</button>
+                                                <button className="btn btn-outline btn-secondary" onClick={()=>handledelete(toy._id)}>Delete</button>
                                                 </td>
 
                                           </tr>

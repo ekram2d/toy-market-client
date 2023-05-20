@@ -38,14 +38,16 @@ const PRvider = ({ children }) => {
       useEffect(() => {
 
             const unsubcribe = onAuthStateChanged(auth, currentuser => {
+                
                   setUser(currentuser);
-                  setLoading(false);
+                return  setLoading(false);
 
             })
             return () => {
                   return unsubcribe();
             }
       }, [])
+      // console.log("pro",loading);
       const authInfo = {
 
             user,

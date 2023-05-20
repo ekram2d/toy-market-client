@@ -16,6 +16,7 @@ import Details from './Components/Details/Details';
 import AllToy from './AllToy/AllToy';
 import AddToy from './AddToy/AddToy';
 import MyToys from './MyToys/MyToys';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 
 
