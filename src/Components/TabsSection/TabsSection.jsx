@@ -10,7 +10,7 @@ const TabsSection = () => {
   const [data3, setData3] = useState();
   const [sate, setState] = useState("Sports Car")
   useEffect(() => {
-    fetch("data.json")
+    fetch("http://localhost:5000/datas")
       .then(res => res.json())
       .then(data => {
         

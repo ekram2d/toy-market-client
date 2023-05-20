@@ -12,6 +12,7 @@ import Erropage from './Components/ErrorPage/Erropage';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import PRvider from './PROvider/PRvider';
+import Details from './Components/Details/Details';
 
 
 
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
     path:'/blog',
     element:<p>blog</p>
 
+  },
+  {
+   path:'/details/:id',
+   element:<Details></Details>,
+   loader:({params})=>fetch(`http://localhost:5000/singleservices/${params.id}`)
   },
 
 ]
