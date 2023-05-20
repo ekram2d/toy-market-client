@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link, useLoaderData, useLocation } from 'react-router-dom';
 
+
+
+
 const AllToy = () => {
       const toys = useLoaderData();
-      const location =useLocation();
+      const location = useLocation();
+
       // console.log("lo",location);
       // console.log(toys);
+
       return (
             <div className="w-full">
                   {/* <h1>{location.pathname}</h1> */}
@@ -18,7 +23,8 @@ const AllToy = () => {
                                     <th>Sub-Category</th>
                                     <th>Price</th>
                                     <th>Avialble Quantity</th>
-                                    <th>Veiw Details</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
                               </tr>
                         </thead>
                         <tbody>
@@ -37,7 +43,7 @@ const AllToy = () => {
                                     </tr>
 
 
-                              )}
+                              ) }
 
                         </tbody>
 
