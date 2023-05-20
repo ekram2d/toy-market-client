@@ -130,7 +130,7 @@ const AddToy = () => {
                               </div>
                         </div>
                         <div className="form-control mt-6">
-                              <input className="btn btn-primary btn-block" type="submit" value="Order Confirm" required />
+                              <input className="btn btn-primary btn-block" type="submit" value="Add Toy" required />
                         </div>
                   </form>
                   <div className="card-body">

@@ -37,6 +37,36 @@ const MyToys = () => {
                   })
             }
       }
+
+      const handleUpdate=(id)=>{
+            console.log(id)
+            const proceed = confirm("Are sure to delete");
+            if(proceed) {
+                  fetch(`http://localhost:5000/bookings/${id}`,{
+                        method:'PATCH',
+                        headers:{
+                              'content-type':'application/json'
+                        },
+                        body:JSON.stringify()
+                  })
+                  .then(res=>res.json())
+                  .then(data =>{
+                        console.log(data);
+                        if(data.modifiedCount>0) {
+                        setLoad(!load)
+                        Swal.fire({
+                              title: 'Success!',
+                              text: 'Updated toy successfully',
+                              icon: 'success',
+                              confirmButtonText: 'OK'
+                            })
+
+                        }
+                  })
+            }
+      }
+
+      
       return (
             <div>
                   <div className="w-full">
@@ -65,7 +95,9 @@ const MyToys = () => {
                                                 <td>{toy?.price}</td>
                                                 <td>{toy?.availableQuantity}</td>
 
-                                                <td> <button className="btn btn-outline btn-primary" onClick={()=>setLoad(!load)}>Update</button>
+                                                <td> 
+                                                      
+                                                      <Link to={`/updated/${toy._id}`}><button className="btn btn-outline btn-primary" >Update</button></Link> 
                                                      
                                                 </td>
                                                 <td>
