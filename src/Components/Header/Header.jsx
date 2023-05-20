@@ -21,16 +21,17 @@ const Header = () => {
 
       }
       return (
-            <div className="navbar bg-base-300 rounded-lg dropdown mb-32">
+           <div className='mb-40'>
+             <div className="navbar bg-base-300 rounded-lg">
                   <div className="navbar-start">
-                        <div className="">
-                              <label tabIndex={0} className="btn btn-ghost lg:hidden ">
+                        <div className="dropdown">
+                              <label tabIndex={0} className="btn btn-ghost lg:hidden">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                               </label>
                               <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                     <li> <NavLink to="/">Home</NavLink></li>
-                                    <li> <NavLink to="/">Blog</NavLink></li>
-                                    <li> <NavLink to="/">ToY</NavLink></li>
+                                    <li> <NavLink to="/blog">Blog</NavLink></li>
+                                    <li> <NavLink to="/toy">All ToY</NavLink></li>
                               </ul>
                         </div>
                         <a className=" text-xl font-bold uppercase">Amazon Toys
@@ -40,7 +41,7 @@ const Header = () => {
                         <ul className="menu menu-horizontal px-1">
                               <li> <NavLink to="/">Home</NavLink></li>
                               <li> <NavLink to="/blog">Blog</NavLink></li>
-                              <li> <NavLink to="/toy">ToY</NavLink></li>
+                              <li> <NavLink to="/toy">All ToY</NavLink></li>
                         </ul>
                   </div>
                  
@@ -78,6 +79,7 @@ const Header = () => {
                         </div>
                   </div>
             </div >
+           </div>
       );
 };
 

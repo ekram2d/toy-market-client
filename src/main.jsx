@@ -13,6 +13,7 @@ import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import PRvider from './PROvider/PRvider';
 import Details from './Components/Details/Details';
+import AllToy from './AllToy/AllToy';
 
 
 
@@ -47,6 +48,12 @@ const router = createBrowserRouter([
   {
     path:'/blog',
     element:<p>blog</p>
+
+  },
+  {
+    path:'/toy',
+    element:<AllToy></AllToy>,
+    loader:({params})=>fetch("http://localhost:5000/datas")
 
   },
   {
