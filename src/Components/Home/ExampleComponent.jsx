@@ -5,7 +5,7 @@ import 'aos/dist/aos.css';
 function ExampleComponent() {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration
+      duration: 800, // Animation duration
       once: false, // Only animate once
     });
   }, []);
