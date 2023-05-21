@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from './Provider/AuthProvider';
-import { updateProfile } from 'firebase/auth';
+import { getAuth, updateProfile } from 'firebase/auth';
+import app from '../../firebase/firebase.config';
 
-
+const auth = getAuth(app);
 const Register = () => {
 
       const navigate = useNavigate()
@@ -29,20 +30,32 @@ const Register = () => {
             }
             createUser(email, password)
                   .then((result) => {
-                        console.log("reg", result);
+                        // console.log("reg", result);
                         const registerUser = result.user;
                         console.log(registerUser);
-                        setProfile(name, photo);
-                        setSucess("succesfully created")
-                        Logout()
-                              .then((result) => {
+                        updateProfile(auth.currentUser, {
+                              displayName: name, photoURL: photo
+                        })
+                        .then((user) => {
+                                    console.log('Profile updated!',user);
+                                    navigate('/login')
+                                    // Profile updated!
+                                    // ...
+                              }).catch((error) => {
+                                    console.log(error.messgae);
+                                    // An error occurred
+                                    // ...
+                              });
+                        // setSucess("succesfully created")
+                        // Logout()
+                        //       .then((result) => {
 
-                              })
-                              .catch(error => {
+                        //       })
+                        //       .catch(error => {
 
-                              })
+                        //       })
 
-                        navigate('/login')
+                        
 
 
                   })
@@ -53,21 +66,10 @@ const Register = () => {
       })
 
 
-      const setProfile = (name, photo) => {
-            console.log("eeeeee", name, photo)
-            updateProfile(auth.currentUser, {
-                  displayName: name, photoURL: photo
-            })
-            .then((user) => {
-                        console.log('Profile updated!');
-                        // Profile updated!
-                        // ...
-                  }).catch((error) => {
-                        console.log(error.messgae);
-                        // An error occurred
-                        // ...
-                  });
-      }
+      // const setProfile = (name, photo) => {
+      //       console.log("eeeeee", name, photo)
+            
+      // }
 
 
 

@@ -10,14 +10,9 @@ import 'aos/dist/aos.css'
 import ExampleComponent from './ExampleComponent';
 
 const Home = () => {
-      useEffect(() => {
-            AOS.init({
-              duration: 1000, // Set the animation duration (in milliseconds)
-              once: true, // Only animate elements once while scrolling
-            });
-          }, []);
+      
       return (
-            <div className='mt-3'>
+            <div className='mt-10'>
                   <Slider></Slider>
                   <GallerySection></GallerySection>
                   <TabsSection></TabsSection>

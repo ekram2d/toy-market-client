@@ -6,7 +6,7 @@ const ShopByCatagory = ({ds}) => {
 
       const {_id,number,pictureUrl,name,price,rating}=ds
       return (
-            <div className="card card-compact w-96 bg-base-100 shadow-xl">
+            <div className="card card-compact lg:w-[50%] bg-base-100 shadow-xl">
             <figure><img className='w-[50%] rounded-lg' src={pictureUrl} alt="Shoes" /></figure>
             <div className="card-body">
               <h2 className="card-title">{name}</h2>

@@ -22,7 +22,7 @@ const Header = () => {
 
       }
       return (
-            <div className='mb-40'>
+            <div className='mb-80'>
                   <div className="navbar bg-base-300 rounded-lg">
                         <div className="navbar-start">
                               <div className="dropdown">
