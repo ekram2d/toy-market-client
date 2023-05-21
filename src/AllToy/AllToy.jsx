@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLoaderData, useLocation } from 'react-router-dom';
 
 
@@ -7,13 +7,15 @@ import { Link, useLoaderData, useLocation } from 'react-router-dom';
 const AllToy = () => {
       const toys = useLoaderData();
       const location = useLocation();
+      const [text,setText]=useState();
 
       // console.log("lo",location);
       // console.log(toys);
-
+console.log(text)
       return (
             <div className="w-full">
                   {/* <h1>{location.pathname}</h1> */}
+                 <div className='flex items-center justify-center m-3 gap-2'><input type='text' className='rounded p-1 text-white' onChange={e=>setText(e.target.value)}></input> <button className='rounded bg-black text-white p-1'>search</button></div>
                   <table className="table table-compact w-full">
                         <thead>
                               <tr>

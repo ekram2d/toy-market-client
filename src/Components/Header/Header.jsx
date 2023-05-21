@@ -32,8 +32,10 @@ const Header = () => {
                                           <li> <NavLink to="/">Home</NavLink></li>
                                           <li> <NavLink to="/blog">Blog</NavLink></li>
                                           <li> <NavLink to="/toy">All ToY</NavLink></li>
-                                          <li> <NavLink to="/addToy">Add Toy</NavLink></li>
-                                          <li> <NavLink to="/mytoys">My Toys</NavLink></li>
+                                         {
+                                          user && <><li> <NavLink to="/addToy">Add Toy</NavLink></li>
+                                          <li> <NavLink to="/mytoys">My Toys</NavLink></li></> 
+                                         }
 
                                     </ul>
                               </div>
@@ -45,8 +47,10 @@ const Header = () => {
                                     <li> <NavLink to="/">Home</NavLink></li>
                                     <li> <NavLink to="/blog">Blog</NavLink></li>
                                     <li> <NavLink to="/toy">All ToY</NavLink></li>
-                                    <li> <NavLink to="/addToy">Add Toy</NavLink></li>
-                                    <li> <NavLink to="/mytoys">My Toys</NavLink></li>
+                                    {
+                                          user && <><li> <NavLink to="/addToy">Add Toy</NavLink></li>
+                                          <li> <NavLink to="/mytoys">My Toys</NavLink></li></> 
+                                         }
                               </ul>
                         </div>
 
