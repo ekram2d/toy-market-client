@@ -1,20 +1,25 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../PROvider/PRvider';
+import { AuthContext } from './Provider/AuthProvider';
+import { updateProfile } from 'firebase/auth';
+
 
 const Register = () => {
-    
-            const [error, setError] = useState(null);
-            const navigate= useNavigate()
-            const [succes,setSucess]=useState(null);
-            const { createUser,Logout } = useContext(AuthContext);
+
+      const navigate = useNavigate()
+      const [error, setError] = useState(null);
+      const [succes, setSucess] = useState(null);
+      const { createUser, Logout } = useContext(AuthContext);
+
+
       const handleRegister = ((event) => {
             event.preventDefault();
             setError("");
+            setSucess("");
             const form = event.target;
             // console.log(form)
-            const name=form.displayname.value;
-            const photo=form.url.value;
+            const name = form.displayname.value;
+            const photo = form.url.value;
             const email = form.email.value;
             const password = form.password.value;
 
@@ -22,39 +27,38 @@ const Register = () => {
                   setError('password must be at least 6 character')
                   return;
             }
-            console.log(name,photo,  email, password)
             createUser(email, password)
                   .then((result) => {
-                        console.log(result);
+                        console.log("reg", result);
                         const registerUser = result.user;
                         console.log(registerUser);
                         setProfile(name, photo);
                         setSucess("succesfully created")
                         Logout()
-                        .then((result) => {
-      
-                        })
-                        .catch(error => {
-      
-                        })
+                              .then((result) => {
+
+                              })
+                              .catch(error => {
+
+                              })
 
                         navigate('/login')
-                      
+
 
                   })
                   .catch(error => {
                         setError(error.messgae);
 
                   })
-                 
-
       })
+
+
       const setProfile = (name, photo) => {
             console.log("eeeeee", name, photo)
             updateProfile(auth.currentUser, {
                   displayName: name, photoURL: photo
             })
-                  .then((user) => {
+            .then((user) => {
                         console.log('Profile updated!');
                         // Profile updated!
                         // ...
@@ -66,7 +70,9 @@ const Register = () => {
       }
 
 
-      
+
+
+
       return (
             <div className="hero min-h-screen bg-base-200">
                   <div className="hero-content flex-col lg:flex">
@@ -78,7 +84,7 @@ const Register = () => {
                               <div className="card-body">
                                     <form onSubmit={handleRegister}>
 
-                                    <div className="form-control">
+                                          <div className="form-control">
                                                 <label className="label">
                                                       <span className="label-text">User Name</span>
                                                 </label>
@@ -114,6 +120,7 @@ const Register = () => {
                                     </form>
                                     <div>
                                           <p className='text-red-700'>{error}</p>
+                                          <p className='text-green-950-700'>{succes}</p>
                                     </div>
                               </div>
                         </div>

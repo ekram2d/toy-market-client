@@ -11,14 +11,16 @@ import Home from './Components/Home/Home';
 import Erropage from './Components/ErrorPage/Erropage';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
-import PRvider from './PROvider/PRvider';
+
 import Details from './Components/Details/Details';
 import AllToy from './AllToy/AllToy';
 import AddToy from './AddToy/AddToy';
 import MyToys from './MyToys/MyToys';
-import PrivateRoute from './PrivateRoute/PrivateRoute';
+
 import Updated from './Updated/Updated';
 import Blog from './Blog/Blog';
+import AuthProvider from './Components/Register/Provider/AuthProvider';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 
 
@@ -58,20 +60,20 @@ const router = createBrowserRouter([
     {
       path: '/toy',
       element: <AllToy></AllToy>,
-      loader: ({ params }) => fetch("http://localhost:5000/alltoy")
+      loader: ({ params }) => fetch("https://server-fawn-chi.vercel.app/alltoy")
 
     },
     {
       path: '/details/:id',
       element: <Details></Details>,
-      loader: ({ params }) => fetch(`http://localhost:5000/singleservices/${params.id}`)
+      loader: ({ params }) => fetch(`https://server-fawn-chi.vercel.app/singleservices/${params.id}`)
     },
     {
 
 
       path: '/singletoy/:id',
       element: <Details></Details>,
-      loader: ({ params }) => fetch(`http://localhost:5000/singleuser/${params.id}`)
+      loader: ({ params }) => fetch(`https://server-fawn-chi.vercel.app/singleuser/${params.id}`)
     },
     {
       path: '/addToy',
@@ -79,12 +81,12 @@ const router = createBrowserRouter([
     },
     {
       path:'/mytoys',
-      element:<MyToys></MyToys>
+      element:<PrivateRoute><MyToys></MyToys></PrivateRoute>
     },
     {
       path:'/updated/:id',
       element:<Updated></Updated>,
-      loader: ({ params }) => fetch(`http://localhost:5000/updated/${params.id}`)
+      loader: ({ params }) => fetch(`https://server-fawn-chi.vercel.app/updated/${params.id}`)
       
     }
   
@@ -97,6 +99,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
 
-    <PRvider><RouterProvider router={router} /></PRvider>
+  <AuthProvider><RouterProvider router={router} /></AuthProvider>
   </React.StrictMode>
 );

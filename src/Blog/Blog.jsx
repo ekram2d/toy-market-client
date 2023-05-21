@@ -9,11 +9,11 @@ const Blog = () => {
                         </div>
                         <div className="collapse-content">
                               <h1 className='font-bold'>Answer:</h1>
-                              <p>An access token is a credential that proves authorization to access resources</p>
-                              <p>while a refresh token allows obtaining a new access token when the current one expire</p>
-                              <p>
+                              <p className='font-serif'>An access token is a credential that proves authorization to access resources</p>
+                              <p className='font-thin'>while a refresh token allows obtaining a new access token when the current one expire</p>
+                              <p className='font-serif'>
                                     Access tokens are used to authenticate and authorize access to resources, while refresh tokens are used to obtain new access tokens without requiring reauthentication.</p>
-                              <p>Access tokens and refresh tokens should be securely stored on the client-side using recommended storage mechanisms provided by the platform or frameworks used.</p>
+                              <p className='font-thin'> Access tokens and refresh tokens should be securely stored on the client-side using recommended storage mechanisms provided by the platform or frameworks used.</p>
                         </div>
                   </div>
                   <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
@@ -32,9 +32,9 @@ const Blog = () => {
                         </div>
                         <div className="collapse-content">
                               <h1 className='font-bold'>Answer:</h1>
-                              <p>Express.js is a popular and lightweight web application framework for Node.js, used to build server-side applications and APIs with simplicity and flexibility.</p>
+                              <p className='font-serif'>Express.js is a popular and lightweight web application framework for Node.js, used to build server-side applications and APIs with simplicity and flexibility.</p>
                             
-                              <p>Nest.js is a progressive, modular, and TypeScript-based framework for building scalable and efficient server-side applications with a focus on developer productivity and maintainability.</p>
+                              <p className='font-mono'>Nest.js is a progressive, modular, and TypeScript-based framework for building scalable and efficient server-side applications with a focus on developer productivity and maintainability.</p>
                         </div>
                   </div>
                   <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
@@ -43,9 +43,9 @@ const Blog = () => {
                         </div>
                         <div className="collapse-content">
                               <h1 className='font-bold'>Answer:</h1>
-                              <p>MongoDB's aggregate is a powerful feature that allows flexible querying and data transformation by combining multiple operations, such as grouping, filtering, sorting, and calculating aggregations, in a single query.</p>
+                              <p className='font-serif'>MongoDB's aggregate is a powerful feature that allows flexible querying and data transformation by combining multiple operations, such as grouping, filtering, sorting, and calculating aggregations, in a single query.</p>
                             
-                              <p>The MongoDB aggregate pipeline works by taking a collection of documents as input and sequentially applying various stages, such as match, group, sort, and project, to filter, manipulate, and aggregate the data, ultimately producing the desired result set based on the specified operations.</p>
+                              <p className='font-thin'>The MongoDB aggregate pipeline works by taking a collection of documents as input and sequentially applying various stages, such as match, group, sort, and project, to filter, manipulate, and aggregate the data, ultimately producing the desired result set based on the specified operations.</p>
                         </div>
                   </div>
                  

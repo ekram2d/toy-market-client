@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
-import { AuthContext } from '../../PROvider/PRvider';
+import { AuthContext } from '../Register/Provider/AuthProvider';
+
 
 const Details = () => {
       const _id = useParams();
@@ -9,7 +10,7 @@ const Details = () => {
       // console.log("ki", user)
       const singledata= useLoaderData()
       // useEffect(() => {
-      //       fetch(`http://localhost:5000/singleservices/${id}`)
+      //       fetch(`https://server-fawn-chi.vercel.app/singleservices/${id}`)
       //             .then(res => res.json())
       //             .then(data => setSingledata(data))
       // }, [])

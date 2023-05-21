@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from '../../PROvider/PRvider';
+import { AuthContext } from '../Register/Provider/AuthProvider';
+
 
 
 

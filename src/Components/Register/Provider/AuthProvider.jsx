@@ -1,13 +1,14 @@
+
 import React, { createContext, useEffect, useState } from 'react';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import app from '../../../firebase/firebase.config';
 
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
-
-import app from '../firebase/firebase.config';
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
-const Provider = new GoogleAuthProvider();
-const PRvider = ({ children }) => {
+const Provider=new GoogleAuthProvider();
+
+const AuthProvider = ({ children }) => {
       const [user, setUser] = useState(null);
       const [loading, setLoading] = useState(true);
       const createUser = ((email, password) => {
@@ -24,30 +25,25 @@ const PRvider = ({ children }) => {
             return signOut(auth)
 
       }
-      const LogWithGoogle = (auth, Provider) => {
+      const LogWithGoogle=(auth,Provider)=>{
             setLoading(true);
-            return signInWithPopup(auth, Provider);
+            return signInWithPopup(auth,Provider);
 
       }
-      // const LogWithGithub = (auth, githubprovier) => {
-      //       setLoading(true);
-      //       return signInWithPopup(auth, githubprovier);
-      // }
+        
 
-
+    
       useEffect(() => {
 
             const unsubcribe = onAuthStateChanged(auth, currentuser => {
-                
                   setUser(currentuser);
-                return  setLoading(false);
+                  setLoading(false);
 
             })
             return () => {
                   return unsubcribe();
             }
       }, [])
-      // console.log("pro",loading);
       const authInfo = {
 
             user,
@@ -56,19 +52,19 @@ const PRvider = ({ children }) => {
             Logout,
             loading,
             LogWithGoogle,
-            // LogWithGithub,
+            
 
 
       };
-      console.log(user);
       return (
+
             <AuthContext.Provider value={authInfo}>
-                  {
-                        children
-                  }
+                  {children}
 
             </AuthContext.Provider>
       );
 };
 
-export default PRvider;
+
+
+export default AuthProvider;

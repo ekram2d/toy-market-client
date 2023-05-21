@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
-import { AuthContext } from '../PROvider/PRvider';
+
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Components/Register/Provider/AuthProvider';
 
 const Updated = () => {
       const data=useLoaderData();
@@ -37,7 +38,7 @@ const Updated = () => {
                   description
 
             }
-        fetch(`http://localhost:5000/bookings/${_id}`, {
+        fetch(`https://server-fawn-chi.vercel.app/bookings/${_id}`, {
             method: 'PUT',
             headers: {
                   'content-type': 'application/json'

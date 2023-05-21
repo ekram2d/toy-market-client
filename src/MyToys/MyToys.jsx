@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../PROvider/PRvider';
+
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import { AuthContext } from '../Components/Register/Provider/AuthProvider';
 const MyToys = () => {
       const { user } = useContext(AuthContext);
       // console.log(user?.email);
       const [toys, setBooking] = useState([]);
       const [load, setLoad] = useState(true);
-      const url = `http://localhost:5000/bookings?email=${user?.email}`
+      const url = `https://server-fawn-chi.vercel.app/bookings?email=${user?.email}`
       useEffect(() => {
             fetch(url)
                   .then(res => res.json())
@@ -18,7 +19,7 @@ const MyToys = () => {
             console.log(id);
             const proceed = confirm("Are sure to delete");
             if(proceed) {
-                  fetch(`http://localhost:5000/bookings/${id}`,{
+                  fetch(`https://server-fawn-chi.vercel.app/bookings/${id}`,{
                         method:'DELETE'
                   })
                   .then(res=>res.json())
@@ -42,7 +43,7 @@ const MyToys = () => {
             console.log(id)
             const proceed = confirm("Are sure to delete");
             if(proceed) {
-                  fetch(`http://localhost:5000/bookings/${id}`,{
+                  fetch(`https://server-fawn-chi.vercel.app/bookings/${id}`,{
                         method:'PATCH',
                         headers:{
                               'content-type':'application/json'

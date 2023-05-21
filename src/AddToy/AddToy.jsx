@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../PROvider/PRvider';
+
 import Swal from 'sweetalert2'
+import { AuthContext } from '../Components/Register/Provider/AuthProvider';
 // const Swal = require('sweetalert2')
 const AddToy = () => {
       const { user } = useContext(AuthContext);
@@ -17,7 +18,7 @@ const AddToy = () => {
             const sellerName = user?.displayName;
             const sellerEmail = user?.email;
             const subCategory = form.subcata.value;
-            const price = form.price.value;
+            const price =parseFloat( form.price.value);
             const rating = form.rating.value;
             const availableQuantity = form.quantity.value;
             const description = form.detail.value;
@@ -39,7 +40,7 @@ const AddToy = () => {
 
             // console.log(booking);
 
-            fetch('http://localhost:5000/bookings', {
+            fetch('https://server-fawn-chi.vercel.app/bookings', {
                   method: 'POST',
                   headers: {
                         'content-type': 'application/json'
