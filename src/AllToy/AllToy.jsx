@@ -1,21 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData, useLocation } from 'react-router-dom';
 
 
 
 
 const AllToy = () => {
-      const toys = useLoaderData();
+      const toys1 = useLoaderData();
       const location = useLocation();
-      const [text,setText]=useState();
+      const [text,setText]=useState("");
 
+      const[toys,setToys]=useState(toys1)
+      const [set,setD]=useState(true)
+      const url = `https://server-fawn-chi.vercel.app/search?name=${text}`
+      useEffect(() => {
+            fetch(url)
+                  .then(res => res.json())
+                  .then(data => setToys(data))
+      }, [set])
       // console.log("lo",location);
       // console.log(toys);
-console.log(text)
+      
+// console.log(text)
+const handletext=()=>{
+      console.log(text);
+      setD(!set)
+      // http://localhost:5001/search?name=Building%20and%20Construction%20Toy
+}
       return (
             <div className="w-full">
                   {/* <h1>{location.pathname}</h1> */}
-                 <div className='flex items-center justify-center m-3 gap-2'><input type='text' className='rounded p-1 text-white' onChange={e=>setText(e.target.value)}></input> <button className='rounded bg-black text-white p-1'>search</button></div>
+                 <div className='flex items-center justify-center m-3 gap-2'><input type='text' className='rounded p-1 text-white' onChange={e=>setText(e.target.value)} placeholder='search by TOY NAME'></input> <button onClick={handletext} className='rounded bg-black text-white p-1'>search</button></div>
                   <table className="table table-compact w-full">
                         <thead>
                               <tr>
